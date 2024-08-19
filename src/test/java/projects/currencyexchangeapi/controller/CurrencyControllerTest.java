@@ -56,8 +56,6 @@ public class CurrencyControllerTest {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("db/currencies/add-three-default-currencies.sql"));
-            ScriptUtils.executeSqlScript(connection,
                     new ClassPathResource("db/users/add-user-roles.sql"));
         }
     }
@@ -72,19 +70,16 @@ public class CurrencyControllerTest {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("db/currencies/remove-all-currencies.sql"));
-            ScriptUtils.executeSqlScript(connection,
                     new ClassPathResource("db/users/remove-user-roles.sql"));
         }
     }
 
     @WithMockUser(username = "admin", roles = {"ADMIN"})
-    @Test
-    @Sql(scripts = "classpath:db/currencies/delete-test-currency.sql",
+    @Sql(scripts = "classpath:db/currencies/remove-test-currency.sql",
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    @Test
     @DisplayName("Create a new currency")
     void createNewCurrency_ValidRequestDto_Success() throws Exception {
-
         String currencyCode = "KKK";
         String currencyName = "KKK currency";
         CreateCurrencyRequestDto requestDto = new CreateCurrencyRequestDto(currencyCode, currencyName);
@@ -106,6 +101,12 @@ public class CurrencyControllerTest {
         EqualsBuilder.reflectionEquals(expected, actual, "id");
     }
 
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    @Sql(scripts = {"classpath:db/currencies/clear-currencies-and-rates.sql",
+            "classpath:db/currencies/add-three-test-currencies.sql"},
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:db/currencies/remove-three-test-currencies.sql",
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     @DisplayName("Get all currencies")
     void getAll_GivenCurrencies_ShouldReturnAllCurrencies() throws Exception {

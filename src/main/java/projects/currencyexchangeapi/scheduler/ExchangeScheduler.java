@@ -47,6 +47,7 @@ public class ExchangeScheduler {
                     addReserve(exchange);
 
                     pendingExchangeHolder.getPendingRequests().remove(exchange);
+
                     pendingExchangeHolder.getPendingRequestTimers().put(exchange, LocalDateTime.now());
 
                     log.info("Notified user and removed exchange from pending, exchange id: {}", exchange.getId());

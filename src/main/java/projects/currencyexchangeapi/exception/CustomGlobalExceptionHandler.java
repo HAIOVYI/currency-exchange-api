@@ -22,11 +22,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    public static final String TIMESTAMP = "timestamp";
-    public static final String STATUS = "status";
-    public static final String ERRORS = "errors";
-    public static final String ERROR = "error";
-    public static final String GAP = " ";
+    private static final String TIMESTAMP = "timestamp";
+    private static final String STATUS = "status";
+    private static final String ERRORS = "errors";
+    private static final String ERROR = "error";
+    private static final String GAP = " ";
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(

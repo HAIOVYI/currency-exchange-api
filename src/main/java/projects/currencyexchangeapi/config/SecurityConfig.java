@@ -40,9 +40,8 @@ public class SecurityConfig {
                         auth -> auth
                                 .requestMatchers(
                                         "/login",
-                                        "/register",
-                                        "/ws/**",
-                                        "/**")
+                                        "/register"
+                                )
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()

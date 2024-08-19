@@ -32,8 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-### Docker ###
-/.env
-
 ### log ###
 log_file.log

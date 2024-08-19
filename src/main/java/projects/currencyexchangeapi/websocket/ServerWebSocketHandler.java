@@ -36,7 +36,7 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
     private final ExchangeService exchangeService;
 
     @Override
-    public void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+    public void handleTextMessage(WebSocketSession session, TextMessage message) {
         log.info("Received message from session id: {}", session.getId());
 
         try {
@@ -60,7 +60,7 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
     }
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+    public void afterConnectionEstablished(WebSocketSession session) {
         log.info("Connection established, session id: {}", session.getId());
 
         try {

@@ -56,7 +56,6 @@ public class CurrencyController {
             description = "Delete a currency by its id. This endpoint requires ADMIN role.")
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<String> delete(@PathVariable("id") Long id) {
         currencyService.delete(id);
 

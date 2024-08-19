@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -51,5 +52,22 @@ public class ExchangeEntity {
 
     public enum RequestStatus {
         PENDING, COMPLETED, CANCELLED
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ExchangeEntity exchange = (ExchangeEntity) o;
+        return Objects.equals(id, exchange.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
