@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-currencies-table
+      author: haiovyi
+      changes:
+        - createTable:
+            tableName: currencies
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: code
+                  type: varchar(3)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: decimal(19, 4)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValue: false
+                  constraints:
+                    nullable: false
+
+        - insert:
+            tableName: currencies
+            columns:
+              - column:
+                  name: code
+                  value: "UAH"
+              - column:
+                  name: name
+                  value: "Ukrainian Hryvnia"
+              - column:
+                  name: balance
+                  valueNumeric: 5000.0000
+        - insert:
+            tableName: currencies
+            columns:
+              - column:
+                  name: code
+                  value: "USD"
+              - column:
+                  name: name
+                  value: "US Dollar"
+              - column:
+                  name: balance
+                  valueNumeric: 5000.0000
+        - insert:
+            tableName: currencies
+            columns:
+              - column:
+                  name: code
+                  value: "EUR"
+              - column:
+                  name: name
+                  value: "Euro"
+              - column:
+                  name: balance
+                  valueNumeric: 5000.0000
