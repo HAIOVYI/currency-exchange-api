@@ -53,15 +53,17 @@ public interface CurrencyRateRepository extends JpaRepository<CurrencyRateEntity
     @Query(nativeQuery = true, value = """
             SELECT rates.id, rates.currency_id, rates.rate / base_rate.rate AS rate, rates.timestamp
             FROM currency_rates rates
-                     JOIN (SELECT currency_id, rate, timestamp
-                           FROM currency_rates
-                           WHERE currency_id = (SELECT id FROM currencies WHERE code = :baseCurrency)
-                           ORDER BY timestamp DESC
-                           LIMIT 1) base_rate ON rates.timestamp
+            JOIN (
+                SELECT currency_id, rate
+                FROM currency_rates
+                WHERE currency_id = (SELECT id FROM currencies WHERE code = :baseCurrency)
+                ORDER BY timestamp DESC
+                LIMIT 1
+            ) base_rate
             WHERE rates.timestamp = (SELECT MAX(rates2.timestamp)
                                      FROM currency_rates rates2
                                      WHERE rates2.currency_id = rates.currency_id)
             ORDER BY rates.currency_id;
-                """)
+                            """)
     List<CurrencyRateEntity> findAllByBaseCurrency(@Param("baseCurrency") String baseCurrency);
 }

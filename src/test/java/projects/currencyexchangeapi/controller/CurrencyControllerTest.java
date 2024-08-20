@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -56,7 +57,9 @@ public class CurrencyControllerTest {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("db/users/add-user-roles.sql"));
+                    new ClassPathResource("db/users/create-default-roles.sql"));
+            ScriptUtils.executeSqlScript(connection,
+                    new ClassPathResource("db/currencies/remove-all-currencies-and-currency-rates.sql"));
         }
     }
 
@@ -71,14 +74,14 @@ public class CurrencyControllerTest {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
                     new ClassPathResource("db/users/remove-user-roles.sql"));
+            ScriptUtils.executeSqlScript(connection,
+                    new ClassPathResource("db/currencies/remove-all-currencies-and-currency-rates.sql"));
         }
     }
 
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
-    @Sql(scripts = "classpath:db/currencies/remove-test-currency.sql",
-            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     @DisplayName("Create a new currency")
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
     void createNewCurrency_ValidRequestDto_Success() throws Exception {
         String currencyCode = "KKK";
         String currencyName = "KKK currency";
@@ -101,14 +104,11 @@ public class CurrencyControllerTest {
         EqualsBuilder.reflectionEquals(expected, actual, "id");
     }
 
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
-    @Sql(scripts = {"classpath:db/currencies/clear-currencies-and-rates.sql",
-            "classpath:db/currencies/add-three-test-currencies.sql"},
-            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = "classpath:db/currencies/remove-three-test-currencies.sql",
-            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     @Test
     @DisplayName("Get all currencies")
+    @WithMockUser(username = "user")
+    @Sql(scripts = "classpath:db/currencies/create-three-test-currencies.sql",
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     void getAll_GivenCurrencies_ShouldReturnAllCurrencies() throws Exception {
         List<CurrencyResponseDto> expected = new ArrayList<>();
         expected.add(new CurrencyResponseDto(1L, "ZZZ", "ZZZ currency"));
@@ -125,5 +125,26 @@ public class CurrencyControllerTest {
 
         assertEquals(3, actual.length);
         assertEquals(expected, Arrays.stream(actual).toList());
+    }
+
+    @Test
+    @DisplayName("Delete currency by id")
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    @Sql(scripts = {"classpath:db/currencies/remove-all-currencies-and-currency-rates.sql",
+            "classpath:db/currencies/create-three-test-currencies.sql"},
+            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Sql(scripts = "classpath:db/currencies/remove-three-test-currencies.sql",
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    void deleteCurrency_ValidCurrencyId_Success() throws Exception {
+        Long currencyIdToDelete = 1L;
+
+        mockMvc.perform(delete("/currency/{id}", currencyIdToDelete)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        mockMvc.perform(get("/currency/{id}", currencyIdToDelete)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }
