@@ -58,7 +58,8 @@ public class ExchangeServiceImpl implements ExchangeService {
 
         if (!exchange.getUser().getId().equals(user.getId())) {
             throw new IllegalArgumentException(
-                    String.format("Exchange %d does not belong to user: %d", exchange.getId(), user.getId()));
+                    String.format("Exchange id: %d does not belong to user, user id: %d",
+                            exchange.getId(), user.getId()));
         }
 
         if (requestDto.confirmed() && exchange.getRequestStatus() == ExchangeEntity.RequestStatus.PENDING) {
@@ -68,10 +69,10 @@ public class ExchangeServiceImpl implements ExchangeService {
 
                 cancelCurrencyReserve(exchange);
                 pendingExchangeHolder.getPendingRequestTimers().remove(exchange);
-                log.info("Exchange confirmed and completed: {}", exchange.getId());
+                log.info("Exchange confirmed and completed, exchange id: {}", exchange.getId());
             } else {
                 handleInsufficientFunds(exchange);
-                log.warn("Insufficient funds for exchange confirmation: {}", exchange.getId());
+                log.warn("Insufficient funds for exchange confirmation, exchange id: {}", exchange.getId());
             }
         } else {
             log.info("Exchange with id: {} already cancelled", exchange.getId());
@@ -93,7 +94,7 @@ public class ExchangeServiceImpl implements ExchangeService {
         pendingExchangeHolder.getCurrencyReserveMap().computeIfPresent(exchange.getCurrencyTo().getId(),
                 (key, value) -> value.subtract(calculateRequiredAmount(exchange)));
 
-        log.info("Cancelled currency reserve for exchange: {}", exchange.getId());
+        log.info("Cancelled currency reserve for exchange, exchange id: {}", exchange.getId());
     }
 
     @Override

@@ -1,0 +1,1121 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-currency-rates-for-history
+      author: haiovyi
+      changes:
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-22T21:00:00"
+        - insert:
+              tableName: currency_rates
+              columns:
+                - column:
+                    name: currency_id
+                    valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+                - column:
+                    name: rate
+                    value: 0.9100
+                - column:
+                    name: timestamp
+                    valueDate: "2024-07-22T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.5000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-22T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-23T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9200
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-23T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.6000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-23T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-24T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9150
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-24T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-24T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-25T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-25T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 41.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-25T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-26T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9050
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-26T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-26T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-27T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9150
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-27T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-27T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-28T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9190
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-28T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.9530
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-28T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-29T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9550
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-29T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 44.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-29T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-30T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9150
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-30T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-30T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-31T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-31T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 41.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-07-31T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-01T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-01T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-01T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-02T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9450
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-02T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 43.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-02T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-03T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9250
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-03T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 43.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-03T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-04T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-04T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7343
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-04T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-05T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9250
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-05T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 41.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-05T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-06T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9110
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-06T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-06T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-07T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9550
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-07T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 41.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-07T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-08T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9430
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-08T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-08T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-09T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9150
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-09T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 39.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-09T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-10T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-10T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-10T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-11T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9250
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-11T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7430
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-11T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-12T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9422
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-12T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 41.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-12T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-13T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-13T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-13T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-14T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9430
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-14T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 40.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-14T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-15T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-15T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-15T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-16T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-16T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 38.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-16T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-17T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-17T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-17T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-18T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9230
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-18T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7230
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-18T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-19T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-19T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-19T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-20T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9150
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-20T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 43.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-20T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'USD')
+              - column:
+                  name: rate
+                  value: 1.0000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-21T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'EUR')
+              - column:
+                  name: rate
+                  value: 0.9350
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-21T21:00:00"
+        - insert:
+            tableName: currency_rates
+            columns:
+              - column:
+                  name: currency_id
+                  valueComputed: (SELECT id from currencies WHERE code = 'UAH')
+              - column:
+                  name: rate
+                  value: 42.7000
+              - column:
+                  name: timestamp
+                  valueDate: "2024-08-21T21:00:00"

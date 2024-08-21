@@ -11,3 +11,5 @@ databaseChangeLog:
       file: db/changelog/changes/05-create-currency-rates-table.yaml
   - include:
       file: db/changelog/changes/06-create-exchange-requests-table.yaml
+  - include:
+      file: db/changelog/changes/07-add-currency-rates-for-history.yaml
