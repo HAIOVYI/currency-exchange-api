@@ -1,5 +1,7 @@
 package projects.currencyexchangeapi.security;
 
+import static projects.currencyexchangeapi.security.JwtUtil.AUTHORIZATION_HEADER;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,16 +13,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import projects.currencyexchangeapi.entity.UserEntity;
 
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
-    private static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final String BEARER_PREFIX_NAME = "Bearer";
 
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
@@ -31,7 +29,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain
     ) throws ServletException, IOException {
-        String token = getToken(request);
+        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
+        String token = jwtUtil.extractToken(bearerToken);
 
         if (token != null && jwtUtil.isValidToken(token)) {
             String email = jwtUtil.getUserEmail(token);
@@ -41,13 +40,5 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);
-    }
-
-    private String getToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX_NAME)) {
-            return bearerToken.substring(BEARER_PREFIX_NAME.length());
-        }
-        return null;
     }
 }

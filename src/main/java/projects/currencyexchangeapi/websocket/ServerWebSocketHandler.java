@@ -1,5 +1,7 @@
 package projects.currencyexchangeapi.websocket;
 
+import static projects.currencyexchangeapi.security.JwtUtil.AUTHORIZATION_HEADER;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -25,9 +26,6 @@ import projects.currencyexchangeapi.service.ExchangeService;
 @RequiredArgsConstructor
 @Slf4j
 public class ServerWebSocketHandler extends TextWebSocketHandler {
-
-    private static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final String BEARER_PREFIX_NAME = "Bearer";
 
     private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
@@ -73,7 +71,7 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
     }
 
     @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         log.info("Connection closed, session id: {}, status: {}", session.getId(), status);
 
         try {
@@ -88,7 +86,9 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
     }
 
     private UserEntity getUser(HttpHeaders httpHeaders) {
-        String token = getToken(httpHeaders);
+        String bearerToken = httpHeaders.getFirst(AUTHORIZATION_HEADER);
+
+        String token = jwtUtil.extractToken(bearerToken);
 
         if (token != null && jwtUtil.isValidToken(token)) {
             String email = jwtUtil.getUserEmail(token);
@@ -100,20 +100,9 @@ public class ServerWebSocketHandler extends TextWebSocketHandler {
                     user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
-            log.info("User authentication set in security context, user id: {}", user.getId());
-
             return user;
         }
-        log.warn("Invalid token received in headers");
 
         throw new InvalidTokenException("Invalid token");
-    }
-
-    private String getToken(HttpHeaders httpHeaders) {
-        String bearerToken = httpHeaders.getFirst(AUTHORIZATION_HEADER);
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(BEARER_PREFIX_NAME)) {
-            return bearerToken.substring(BEARER_PREFIX_NAME.length());
-        }
-        return null;
     }
 }

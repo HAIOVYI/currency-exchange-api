@@ -11,9 +11,13 @@ import java.util.Date;
 import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 @Component
 public class JwtUtil {
+
+    public static final String AUTHORIZATION_HEADER = "Authorization";
+    private static final String BEARER_PREFIX_NAME = "Bearer";
 
     private final Key secretKey;
 
@@ -57,5 +61,12 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
         return claimsResolver.apply(claims);
+    }
+
+    public String extractToken(String headerValue) {
+        if (StringUtils.hasText(headerValue) && headerValue.startsWith(BEARER_PREFIX_NAME)) {
+            return headerValue.substring(BEARER_PREFIX_NAME.length());
+        }
+        return null;
     }
 }
